@@ -1,4 +1,4 @@
-# Linux/Ubuntu Bootstrap
+# FRL Linux Bootstrap
 
-Configures shell, ssh, gnome settings (keyboad etc.) for Linux (tested with Ubuntu).
+Most basic config to access frl-bootstrap.
 
