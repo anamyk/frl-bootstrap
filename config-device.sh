@@ -4,7 +4,7 @@ echo ""
 
 echo "Determine where to setup devie specific variables."
 # read -p ">>> Do you work with .devicerc for bash and zsh or just .bashrc? ...type 'devicerc' or 'bashrc' and press <Enter> (default: devicerc): "
-read -p ">>> Default .devicerc for bash and zsh. If you want just bashrc type 'bashrc' and press <Enter> (default: devicerc): "
+read -p ">>> Default .devicerc for bash and zsh; press <Enter>. \n If you want just bashrc type 'bashrc' and press <Enter> (default: devicerc): "
 if [[ $REPLY = bashrc ]]; then
     shellrc=$HOME/.bashrc
 else

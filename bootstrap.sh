@@ -27,9 +27,10 @@ then
     if [[ $setup_type = linux ]]; then
         echo ""
         echo "Upgrading and installing packages ..."
+        sudo add-apt-repository ppa:regolith-linux/release
         sudo apt update
         sudo apt upgrade
-        sudo apt install git vim-gtk3 ssh wget
+        sudo apt install git vim-gtk3 ssh wget regolith-desktop-standard
     elif [[ $setup_type = termux ]]; then
         echo ""
         echo "Upgrading and installing packages ..."
