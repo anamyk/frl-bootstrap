@@ -34,6 +34,7 @@ setup_device () {
 }
 
 devicerc=$HOME/.devicerc
+[[ -f $devicerc ]] && source $devicerc
 
 if [[ -f $devicerc && $DEVICE != '' ]]; then
     echo "This deivce is already configured with .devicerc and devicename \"$DEVICE \"."
