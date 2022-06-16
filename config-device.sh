@@ -48,7 +48,7 @@ if [[ -f $devicerc && $DEVICE != '' ]]; then
 else
     setup_device
 fi
-
+echo ""
 
 # echo "Determine where to setup devie specific variables."
 # read -p ">>> Default .devicerc for bash and zsh: press <Enter>. If you want bashrc type 'bashrc' and press <Enter>: "
