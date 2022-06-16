@@ -17,8 +17,10 @@ setup_device () {
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         DEVICE=$hostname
     else
+        echo ""
         read -p "Enter a name for this device: "
         DEVICE=$REPLY
+        [[ $DEVICE != $hostname ]] && echo "Attention: The given devicename \"$DEVICE\" does not match the hsotname \"$hostname\"."
     fi
     # else
         # echo "... again for this device named '$DEVICE'."
@@ -38,7 +40,7 @@ devicerc=$HOME/.devicerc
 [[ -f $devicerc ]] && source $devicerc
 
 if [[ -f $devicerc && $DEVICE != '' ]]; then
-    echo "This deivce is already configured with .devicerc and devicename \"$DEVICE\"."
+    echo "This device is already configured with .devicerc and devicename \"$DEVICE\"."
     read -p "Do you want to setup again (y/n)? "
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         setup_device
