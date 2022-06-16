@@ -33,6 +33,7 @@ setup_device () {
     echo ""
 }
 
+[[ ! -d $HOME/.ssh ]] && mkdir $HOME/.ssh
 
 devicerc=$HOME/.devicerc
 [[ -f $devicerc ]] && source $devicerc
