@@ -17,7 +17,9 @@ setup_device () {
         echo "... for the first time."
         read -p "Is name of device: $hostname (y/n)? " -n 1 -r
         if [[ $REPLY =~ ^[Yy]$ ]]; then
+            echo "hier1"
             DEVICE=$hostname
+            echo "hier"
         else
             read -p "Enter a name for this device: "
             DEVICE=$REPLY
