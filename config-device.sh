@@ -28,7 +28,7 @@ setup_device () {
         echo "... again for this device named '$DEVICE'."
     fi
 
-    setting="export DEVICE=$DEVICE"; grep -qxF "$setting" $shellrc || echo $setting >> $shellrc;
+    setting="export DEVICE=$DEVICE"; grep -qxF "$setting" $devicerc || echo $setting >> $devicerc;
 
     echo ""
     echo "done: device named $DEVICE"
