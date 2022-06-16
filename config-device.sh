@@ -44,5 +44,6 @@ fi
 setting="export DEVICE=$DEVICE"; grep -qxF "$setting" $shellrc || echo $setting >> $shellrc;
 # setting="export EMAIL=$EMAIL"; grep -qxF "$setting" $shellrc || echo $setting >> $shellrc;
 
-echo "done"
+echo ""
+echo "done: device named $DEVICE"
 echo ""
