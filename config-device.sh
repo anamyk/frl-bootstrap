@@ -13,14 +13,13 @@ setup_device () {
 
     # if [[ $DEVICE == '' ]]; then
         # echo "... for the first time."
-    read -p "Is name of device: $hostname (y/n)? " -n 1 -r
+    read -p "Is name of device the same as hostname \"$hostname\" (y/n)? " -n 1 -r
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         DEVICE=$hostname
     else
         echo ""
         read -p "Enter a name for this device: "
         DEVICE=$REPLY
-        [[ $DEVICE != $hostname ]] && echo "Attention: The given devicename \"$DEVICE\" does not match the hsotname \"$hostname\"."
     fi
     # else
         # echo "... again for this device named '$DEVICE'."
@@ -29,7 +28,8 @@ setup_device () {
     setting="export DEVICE=$DEVICE"; grep -qxF "$setting" $devicerc || echo $setting >> $devicerc;
 
     echo ""
-    echo "done: device named $DEVICE"
+    echo "Done: device named $DEVICE"
+    [[ $DEVICE != $hostname ]] && echo "Attention: The given devicename \"$DEVICE\" does not match the hsotname \"$hostname\"."
     echo ""
 }
 
