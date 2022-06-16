@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-cat $HOME/.ssh/"$DEVICE"_id_ed25519.pub
+# cat $HOME/.ssh/"$DEVICE"_id_ed25519.pub
 echo ""
 echo ">>> Add your <frl-<user>-ssh-key.pub> to your github and load FRL-ssh-keys on the machine"
 read -p ">>> waiting ... when done type 'done' and press <Enter>: "

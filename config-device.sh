@@ -2,48 +2,55 @@
 
 echo ""
 
-echo "Determine where to setup devie specific variables."
-# read -p ">>> Do you work with .devicerc for bash and zsh or just .bashrc? ...type 'devicerc' or 'bashrc' and press <Enter> (default: devicerc): "
-read -p ">>> Default .devicerc for bash and zsh; press <Enter>. \n If you want just bashrc type 'bashrc' and press <Enter> (default: devicerc): "
-if [[ $REPLY = bashrc ]]; then
-    shellrc=$HOME/.bashrc
-else
-    shellrc=$HOME/.devicerc
-    echo "Setting up devicerc ..."
-fi
+devicerc=$HOME/.devicerc
 
-
-echo ""
-echo "Configuring device variables ..."
-
-[[ -f $shellrc ]] || touch $shellrc
-source $shellrc
-
-hostname=$(cat /etc/hostname)
-
-if [[ $DEVICE = '' ]]; then
-    echo "... for the first time."
-    read -p "Is name of device: $hostname (y/n)?" -n 1 -r
+if [[ -f $devicerc ]]; then
+    echo "This deivce is already configured with .devicerc and devicename \"$DEVICE \"."
+    read -p "Do you want to setup again (y/n)? "
     if [[ $REPLY =~ ^[Yy]$ ]]; then
-        DEVICE=$DEVICE
-    else
-        read -p "Enter a name for this device: " DEVICE
-        DEVICE=$DEVICE
+        setup_device
     fi
 else
-    echo "... again for this device named '$DEVICE'."
+    setup_device
 fi
 
-# if [[ $setup_type == linux ]]; then
-#     if [[ $EMAIL = '' ]]; then
-#         read -p "Enter a main email address: " EMAIL
-#         EMAIL=$EMAIL
-#     fi
+
+# echo "Determine where to setup devie specific variables."
+# read -p ">>> Default .devicerc for bash and zsh: press <Enter>. If you want bashrc type 'bashrc' and press <Enter>: "
+# if [[ $REPLY = bashrc ]]; then
+#     shellrc=$HOME/.bashrc
+# else
+#     shellrc=$HOME/.devicerc
+#     echo "Setting up devicerc ..."
 # fi
 
-setting="export DEVICE=$DEVICE"; grep -qxF "$setting" $shellrc || echo $setting >> $shellrc;
-# setting="export EMAIL=$EMAIL"; grep -qxF "$setting" $shellrc || echo $setting >> $shellrc;
+setup_device () {
+    echo ""
+     
+    echo "Configuring device variables ..."
+    [[ -f $devicerc ]] && rm $devicerc
 
-echo ""
-echo "done: device named $DEVICE"
-echo ""
+    [[ -f $devicerc ]] || touch $devicerc
+    source $devicerc
+
+    hostname=$(cat /etc/hostname)
+
+    if [[ $DEVICE = '' ]]; then
+        echo "... for the first time."
+        read -p "Is name of device: $hostname (y/n)?" -n 1 -r
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+            DEVICE=$hostname
+        else
+            read -p "Enter a name for this device: "
+            DEVICE=$DEVICE
+        fi
+    else
+        echo "... again for this device named '$DEVICE'."
+    fi
+
+    setting="export DEVICE=$DEVICE"; grep -qxF "$setting" $shellrc || echo $setting >> $shellrc;
+
+    echo ""
+    echo "done: device named $DEVICE"
+    echo ""
+}
