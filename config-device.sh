@@ -13,18 +13,18 @@ setup_device () {
 
     hostname=$(cat /etc/hostname)
 
-    if [[ $DEVICE == '' ]]; then
-        echo "... for the first time."
-        read -p "Is name of device: $hostname (y/n)? " -n 1 -r
-        if [[ $REPLY =~ ^[Yy]$ ]]; then
-            DEVICE=$hostname
-        else
-            read -p "Enter a name for this device: "
-            DEVICE=$REPLY
-        fi
+    # if [[ $DEVICE == '' ]]; then
+        # echo "... for the first time."
+    read -p "Is name of device: $hostname (y/n)? " -n 1 -r
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        DEVICE=$hostname
     else
-        echo "... again for this device named '$DEVICE'."
+        read -p "Enter a name for this device: "
+        DEVICE=$REPLY
     fi
+    # else
+        # echo "... again for this device named '$DEVICE'."
+    # fi
 
     setting="export DEVICE=$DEVICE"; grep -qxF "$setting" $devicerc || echo $setting >> $devicerc;
 
