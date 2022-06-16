@@ -19,10 +19,17 @@ echo "Configuring device variables ..."
 [[ -f $shellrc ]] || touch $shellrc
 source $shellrc
 
+hostname=$(cat /etc/hostname)
+
 if [[ $DEVICE = '' ]]; then
     echo "... for the first time."
-    read -p "Enter a name for this device: " DEVICE
-    DEVICE=$DEVICE
+    read -p "Is name of device: $hostname (y/n)?" -n 1 -r
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        DEVICE=$DEVICE
+    else
+        read -p "Enter a name for this device: " DEVICE
+        DEVICE=$DEVICE
+    fi
 else
     echo "... again for this device named '$DEVICE'."
 fi

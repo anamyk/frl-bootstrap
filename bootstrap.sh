@@ -30,7 +30,8 @@ then
         sudo apt update
         sudo apt upgrade
         sudo apt install git vim-gtk3 ssh wget
-        read -p "\n Install regolith (y/n)? " -n 1 -r
+        echo ""
+        read -p ">>> Install regolith (y/n)? " -n 1 -r
         if [[ $REPLY =~ ^[Yy]$ ]]
         then
             sudo add-apt-repository ppa:regolith-linux/release
