@@ -29,11 +29,10 @@ setup_device () {
 
     echo ""
     echo "Done: device named $DEVICE"
-    [[ $DEVICE != $hostname ]] && echo "Attention: The given devicename \"$DEVICE\" does not match the hsotname \"$hostname\"."
+    [[ $DEVICE != $hostname ]] && echo "Attention: The given devicename \"$DEVICE\" does not match the hostname \"$hostname\"."
     echo ""
 }
 
-echo ""
 echo ""
 
 devicerc=$HOME/.devicerc
