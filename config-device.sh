@@ -13,7 +13,7 @@ setup_device () {
 
     hostname=$(cat /etc/hostname)
 
-    if [[ $DEVICE = '' ]]; then
+    if [[ $DEVICE == '' ]]; then
         echo "... for the first time."
         read -p "Is name of device: $hostname (y/n)? " -n 1 -r
         if [[ $REPLY =~ ^[Yy]$ ]]; then
