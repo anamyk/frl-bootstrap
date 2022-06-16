@@ -38,7 +38,7 @@ devicerc=$HOME/.devicerc
 [[ -f $devicerc ]] && source $devicerc
 
 if [[ -f $devicerc && $DEVICE != '' ]]; then
-    echo "This deivce is already configured with .devicerc and devicename \"$DEVICE \"."
+    echo "This deivce is already configured with .devicerc and devicename \"$DEVICE\"."
     read -p "Do you want to setup again (y/n)? "
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         setup_device
