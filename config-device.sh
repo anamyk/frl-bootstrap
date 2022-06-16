@@ -1,7 +1,5 @@
 #!/usr/bin/bash
 
-echo ""
-
 setup_device () {
     echo ""
      
@@ -32,6 +30,9 @@ setup_device () {
     echo "done: device named $DEVICE"
     echo ""
 }
+
+echo ""
+echo ""
 
 devicerc=$HOME/.devicerc
 [[ -f $devicerc ]] && source $devicerc
