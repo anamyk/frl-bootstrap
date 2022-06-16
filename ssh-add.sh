@@ -9,7 +9,7 @@ then
     echo ">>> continuing ..."
     echo ""
 else
-    echo ">>> ERROR: a valid gitub ssh config is needed for this script."
+    echo ">>> ERROR: a valid gitub ssh config is needed for the frl-scripts."
     echo ">>> Exiting ..."
     exit 1
 fi
