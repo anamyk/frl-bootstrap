@@ -33,11 +33,14 @@ then
         sudo apt upgrade
         sudo apt install git vim-gtk3 ssh wget
         echo ""
-        read -p ">>> Install regolith (y/n)? " -n 1 -r
-        if [[ $REPLY =~ ^[Yy]$ ]]
+        if ! [[ dpkg -l regolith-desktop-standard >/dev/null ]]
         then
-            sudo add-apt-repository ppa:regolith-linux/release
-            sudo apt install regolith-desktop-standard
+            read -p ">>> Install regolith (y/n)? " -n 1 -r
+            if [[ $REPLY =~ ^[Yy]$ ]]
+            then
+                sudo add-apt-repository ppa:regolith-linux/release
+                sudo apt install regolith-desktop-standard
+            fi
         fi
     elif [[ $setup_type = termux ]]; then
         echo ""
