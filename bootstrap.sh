@@ -46,5 +46,6 @@ then
         pkg install git vim tree openssh wget
     fi
     . config-device.sh
+    . ssh-enable.sh
     # . ssh-add.sh
 fi
