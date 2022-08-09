@@ -1,4 +1,4 @@
 # FRL Linux Bootstrap
 
-Most basic config to access frl-bootstrap.
+Configure and install basics for FRL machines.
 

@@ -4,16 +4,18 @@ echo "********************************************"
 echo "****** bootstrap FRL linux *******"
 echo "********************************************"
 echo "The following basics will be configured:"
-echo "    - your device with device-name and email"
+echo "    - your device with device-name"
 echo "    - setup of device specific .devicerc"
-echo "    - ssh-keys"
-echo "    - add your devive-sshkeys to the"
-echo "      private gitrepo for machine setup"
+echo "    - preparing the .ssh file for you"
+echo ""
+echo " To use the private FRL repos you need to transfer"
+echo " your ssh-keys manually on the machine."
 echo ""
 echo "This might overwrite customization that you may have done."
 echo "Consecutive runs of the script are possible."
 echo "However don't forget to use new shell or source your dotfiles."
-read -p "Are you sure (y/n)? " -n 1 -r
+echo ""
+read -p "Proceed (y/n)? " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     echo ""
@@ -44,5 +46,5 @@ then
         pkg install git vim tree openssh wget
     fi
     . config-device.sh
-    . ssh-add.sh
+    # . ssh-add.sh
 fi
