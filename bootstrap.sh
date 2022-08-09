@@ -33,8 +33,10 @@ then
         sudo apt upgrade
         sudo apt install git vim-gtk3 ssh wget
         echo ""
-        if ! [[ dpkg -l regolith-desktop-standard >/dev/null ]]
+        if dpkg -l regolith-desktop-standard >/dev/null
         then
+            echo "Regolith already installed."
+        else
             read -p ">>> Install regolith (y/n)? " -n 1 -r
             if [[ $REPLY =~ ^[Yy]$ ]]
             then
